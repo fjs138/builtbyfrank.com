@@ -157,4 +157,14 @@
     text-align: center;
     padding: 12px 20px;
   }
+  
+  .links.open .link:hover {
+    background: none;
+  }
+  
+  .links.open .ctaBtn:hover {
+    background: none;
+    transform: none;
+    box-shadow: none;
+  }
 }

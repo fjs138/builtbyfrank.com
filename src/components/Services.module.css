@@ -200,4 +200,30 @@
     padding: 36px 28px;
     gap: 20px;
   }
+
+  .ctaHeading {
+    min-width: unset;
+    text-align: left;
+  }
+}
+
+@media (max-width: 600px) {
+  .cta {
+    padding: 28px 20px;
+    gap: 16px;
+  }
+
+  .ctaHeading {
+    font-size: 18px;
+  }
+
+  .ctaBody {
+    font-size: 14px;
+  }
+
+  .ctaBtn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
 }

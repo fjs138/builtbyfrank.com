@@ -47,7 +47,7 @@ export default function Navbar() {
           <li>
             <a
               href="#contact"
-              className={styles.ctaBtn}
+              className={styles.link}
               onClick={(e) => handleNavClick(e, '#contact')}
             >
               Let's Talk
