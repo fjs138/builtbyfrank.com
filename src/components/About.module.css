@@ -6,22 +6,17 @@
 .section::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--border), transparent);
 }
 
 .inner {
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: start;
 }
 
+/* Left content */
 .label {
   font-size: 12px;
   font-weight: 600;
@@ -32,136 +27,138 @@
 }
 
 .heading {
-  font-size: clamp(32px, 4vw, 48px);
+  font-size: clamp(28px, 3.5vw, 44px);
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: var(--text-primary);
-  margin-bottom: 24px;
-}
-
-.accent {
-  background: var(--gradient-blue);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  margin-bottom: 20px;
 }
 
 .body {
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.75;
   color: var(--text-secondary);
-  margin-bottom: 16px;
+  margin-bottom: 36px;
 }
 
-.skills {
+.eduExp {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 28px 0 32px;
-}
-
-.skill {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-secondary);
+  flex-direction: column;
+  gap: 0;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  padding: 5px 12px;
-  border-radius: 6px;
-  transition: border-color 0.2s, color 0.2s;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 24px;
 }
 
-.skill:hover {
-  border-color: var(--border-hover);
+.block {
+  padding: 20px 24px;
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0;
+}
+
+.blockLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.blockTitle {
+  font-size: 15px;
+  font-weight: 700;
   color: var(--text-primary);
+  margin-bottom: 3px;
 }
 
-.resumeLink {
-  display: inline-flex;
+.blockSub {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.blockLinks {
+  display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.blockLink {
   font-size: 14px;
   font-weight: 600;
   color: var(--blue-light);
   text-decoration: none;
-  transition: gap 0.2s;
+  transition: color 0.2s;
 }
 
-.resumeLink:hover {
-  gap: 12px;
+.blockLink:hover {
+  color: var(--text-primary);
 }
 
-/* Cards */
-.cards {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 24px;
-  transition: border-color 0.2s, transform 0.2s;
-}
-
-.card:hover {
-  border-color: var(--border-hover);
-  transform: translateY(-2px);
-}
-
-.cardIcon {
-  width: 44px;
-  height: 44px;
-  background: var(--blue-glow);
-  border: 1px solid rgba(17, 90, 244, 0.2);
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--blue-light);
-  margin-bottom: 16px;
-}
-
-.cardTitle {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+.dot {
   color: var(--text-muted);
-  margin-bottom: 8px;
 }
 
-.cardSchool {
-  font-size: 16px;
+.resumeBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 4px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 11px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
 }
 
-.cardDegree {
-  font-size: 14px;
-  color: var(--text-secondary);
+.resumeBtn:hover {
+  border-color: var(--border-hover);
+  background: var(--blue-glow);
+  transform: translateY(-1px);
 }
 
-.cardEmployers {
+/* Right photo */
+.photoWrap {
+  position: relative;
   display: flex;
-  gap: 8px;
-  margin-bottom: 4px;
+  justify-content: center;
+  align-items: flex-end;
 }
 
-.cardEmployers span {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-primary);
+.photoGlow {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(17, 90, 244, 0.2) 0%, transparent 70%);
+  pointer-events: none;
 }
 
-.cardEmployers span:not(:last-child)::after {
-  content: '·';
-  margin-left: 8px;
-  color: var(--text-muted);
+.photo {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  object-fit: contain;
+  object-position: bottom;
+  filter: drop-shadow(0 16px 48px rgba(17, 90, 244, 0.15));
+  -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 65%, transparent 100%);
 }
 
 @media (max-width: 900px) {
@@ -169,10 +166,16 @@
     grid-template-columns: 1fr;
     gap: 48px;
   }
+
+  .photoWrap {
+    order: -1;
+  }
+
+  .photo {
+    max-width: 280px;
+  }
 }
 
 @media (max-width: 600px) {
-  .section {
-    padding: 80px 24px;
-  }
+  .section { padding: 80px 24px; }
 }

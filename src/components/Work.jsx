@@ -1,55 +1,59 @@
+import ltxImg from '../assets/ltx640.png'
+import kirksImg from '../assets/kirks640.png'
+import blystoneImg from '../assets/Gemini_Generated_Image_y7qzhpy7qzhpy7qz.png'
 import styles from './Work.module.css'
 
 const projects = [
   {
     title: 'LicenseTraxx',
+    subtitle: null,
     location: 'Arlington, VA',
     description:
-      'Real estate licensing management solution. Track credits and license expirations across agents and brokerages.',
-    tags: ['Project Management', 'Architecture', 'Development', 'Design'],
+      'Real estate licensing management solution. Track credits and license expirations.',
+    responsibilities: 'Project management, system architecture, consultation, development, and design.',
     url: 'http://licensetraxx.com/',
+    image: ltxImg,
     color: '#115AF4',
   },
   {
     title: 'Kirks Institute',
+    subtitle: null,
     location: 'Arlington, VA',
     description:
-      'Real estate course e-commerce platform. Schedule and pay for courses with a seamless booking experience.',
-    tags: ['E-Commerce', 'Architecture', 'Development', 'Design'],
+      'Real estate course e-commerce site. Schedule and pay for courses.',
+    responsibilities: 'Project management, system architecture, consultation, development, and design.',
     url: 'http://kirksinstitute.com/',
+    image: kirksImg,
     color: '#7c3aed',
   },
   {
-    title: 'Blystone / Ashmead Insurance',
+    title: 'The Blystone Company',
+    subtitle: 'now Ashmead Insurance',
     location: 'Hatfield, PA',
     description:
-      'Insurance provider for the tri-state area, servicing commercial and residential needs with a modern web presence.',
-    tags: ['Development', 'Design', 'Technical Support'],
-    url: 'http://blystoneinsurance.com/',
+      'Insurance provider for the tri-state area, servicing commercial and residential needs.',
+    responsibilities: 'Development, design, and technical support.',
+    url: 'https://ashmeadins.com/',
+    image: blystoneImg,
     color: '#0891b2',
   },
 ]
 
 const employers = [
-  { name: 'Penn State', url: 'http://www.psu.edu/' },
-  { name: 'Infor', url: 'http://www.infor.com/' },
-  { name: 'Deacom', url: 'http://www.deacom.com/' },
+  { name: 'Penn State', sub: null, url: 'http://www.psu.edu/' },
+  { name: 'Infor', sub: null, url: 'http://www.infor.com/' },
+  { name: 'Deacom', sub: null, url: 'http://www.deacom.com/' },
+  { name: 'Bravosolution', sub: 'now Jaggaer', url: 'https://www.jaggaer.com/' },
 ]
 
 export default function Work() {
   return (
     <section id="work" className={styles.section}>
       <div className={styles.inner}>
+
         <div className={styles.header}>
-          <div className={styles.label}>Recent Work</div>
-          <h2 className={styles.heading}>
-            Projects that make
-            <br />
-            <span className={styles.accent}>a real difference</span>
-          </h2>
-          <p className={styles.subheading}>
-            A selection of client work spanning e-commerce, SaaS, and professional services.
-          </p>
+          <div className={styles.label}>Client Work</div>
+          <h2 className={styles.heading}>Projects that make<br /><span className={styles.accent}>a real difference</span></h2>
         </div>
 
         <div className={styles.grid}>
@@ -62,8 +66,11 @@ export default function Work() {
               className={styles.card}
               style={{ '--accent': project.color }}
             >
-              <div className={styles.cardTop}>
-                <div className={styles.cardGlow} />
+              <div className={styles.cardImage}>
+                <img src={project.image} alt={project.title} />
+                <div className={styles.cardImageOverlay} />
+              </div>
+              <div className={styles.cardBody}>
                 <div className={styles.cardMeta}>
                   <span className={styles.cardLocation}>{project.location}</span>
                   <svg className={styles.cardArrow} width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -71,20 +78,25 @@ export default function Work() {
                   </svg>
                 </div>
                 <h3 className={styles.cardTitle}>{project.title}</h3>
+                {project.subtitle && <div className={styles.cardSubtitle}>{project.subtitle}</div>}
                 <p className={styles.cardDesc}>{project.description}</p>
-              </div>
-              <div className={styles.cardTags}>
-                {project.tags.map((tag) => (
-                  <span key={tag} className={styles.tag}>{tag}</span>
-                ))}
+                <p className={styles.cardResp}>
+                  <span>Responsibilities:</span> {project.responsibilities}
+                </p>
+                <div className={styles.viewLink}>
+                  View Project
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
               </div>
             </a>
           ))}
         </div>
 
-        {/* Prior employers */}
+        {/* Previous Employers */}
         <div className={styles.employers}>
-          <div className={styles.employersLabel}>Prior Employers</div>
+          <div className={styles.employersLabel}>Previous Employers</div>
           <div className={styles.employersList}>
             {employers.map((emp) => (
               <a
@@ -94,14 +106,15 @@ export default function Work() {
                 rel="noopener noreferrer"
                 className={styles.employer}
               >
-                {emp.name}
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                  <path d="M2 10L10 2M10 2H5M10 2v5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                <div className={styles.employerText}>
+                  <span className={styles.employerName}>{emp.name}</span>
+                  {emp.sub && <span className={styles.employerSub}>{emp.sub}</span>}
+                </div>
               </a>
             ))}
           </div>
         </div>
+
       </div>
     </section>
   )

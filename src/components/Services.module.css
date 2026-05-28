@@ -8,12 +8,10 @@
 .section::after {
   content: '';
   position: absolute;
-  left: 0;
-  right: 0;
+  left: 0; right: 0;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--border), transparent);
 }
-
 .section::before { top: 0; }
 .section::after { bottom: 0; }
 
@@ -23,9 +21,9 @@
 }
 
 .header {
+  max-width: 700px;
+  margin: 0 auto 72px;
   text-align: center;
-  max-width: 640px;
-  margin: 0 auto 80px;
 }
 
 .label {
@@ -38,54 +36,44 @@
 }
 
 .heading {
-  font-size: clamp(32px, 4vw, 48px);
+  font-size: clamp(32px, 4vw, 52px);
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.02em;
   color: var(--text-primary);
-  margin-bottom: 16px;
-}
-
-.accent {
-  background: var(--gradient-blue);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  margin-bottom: 20px;
 }
 
 .subheading {
   font-size: 17px;
   color: var(--text-secondary);
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 /* Steps */
 .steps {
+  max-width: 800px;
+  margin: 0 auto 80px;
   display: flex;
+  flex-direction: column;
   gap: 0;
-  margin-bottom: 80px;
-  position: relative;
 }
 
 .step {
-  flex: 1;
+  display: flex;
+  gap: 28px;
+}
+
+.stepLeft {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-}
-
-.stepConnector {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 24px;
+  flex-shrink: 0;
 }
 
 .stepIconWrap {
-  flex-shrink: 0;
-  width: 56px;
-  height: 56px;
+  width: 52px;
+  height: 52px;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 14px;
@@ -93,8 +81,7 @@
   align-items: center;
   justify-content: center;
   color: var(--blue-light);
-  position: relative;
-  z-index: 1;
+  flex-shrink: 0;
   transition: border-color 0.2s, background 0.2s;
 }
 
@@ -103,19 +90,20 @@
   background: var(--blue-glow);
 }
 
-.stepIcon {
-  display: flex;
-}
-
 .stepLine {
+  width: 1px;
   flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, var(--border), transparent);
-  margin: 0 -1px;
+  min-height: 32px;
+  background: linear-gradient(to bottom, var(--border), transparent);
+  margin: 8px 0;
 }
 
 .stepContent {
-  padding: 0 16px;
+  padding-bottom: 48px;
+}
+
+.step:last-child .stepContent {
+  padding-bottom: 0;
 }
 
 .stepNumber {
@@ -123,112 +111,93 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   color: var(--blue-primary);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .stepTitle {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
 }
 
 .stepDesc {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-secondary);
-  line-height: 1.65;
+  line-height: 1.75;
 }
 
-/* Service grid */
-.serviceGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-}
-
-.serviceCard {
+/* CTA banner */
+.cta {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 28px 24px;
-  transition: border-color 0.2s, transform 0.2s, background 0.2s;
-}
-
-.serviceCard:hover {
-  border-color: var(--border-hover);
-  transform: translateY(-4px);
-  background: linear-gradient(135deg, var(--bg-card), rgba(17, 90, 244, 0.04));
-}
-
-.serviceIcon {
-  width: 48px;
-  height: 48px;
-  background: var(--blue-glow);
-  border: 1px solid rgba(17, 90, 244, 0.2);
-  border-radius: 12px;
+  border-radius: 20px;
+  padding: 52px 56px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: var(--blue-light);
-  margin-bottom: 20px;
+  gap: 40px;
+  position: relative;
+  overflow: hidden;
 }
 
-.serviceTitle {
-  font-size: 16px;
-  font-weight: 700;
+.cta::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gradient-blue);
+}
+
+.ctaHeading {
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 800;
   color: var(--text-primary);
-  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+  flex: 1;
+  min-width: 200px;
 }
 
-.serviceDesc {
-  font-size: 14px;
+.ctaBody {
+  font-size: 15px;
   color: var(--text-secondary);
-  line-height: 1.65;
+  line-height: 1.7;
+  flex: 2;
 }
 
-@media (max-width: 1024px) {
-  .serviceGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--blue-primary);
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 13px 24px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+.ctaBtn:hover {
+  background: var(--blue-light);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px var(--blue-glow-strong);
 }
 
 @media (max-width: 768px) {
-  .section {
-    padding: 80px 24px;
-  }
+  .section { padding: 80px 24px; }
 
-  .steps {
+  .cta {
     flex-direction: column;
-    gap: 32px;
-  }
-
-  .step {
     align-items: flex-start;
-    text-align: left;
-    flex-direction: row;
+    padding: 36px 28px;
     gap: 20px;
-  }
-
-  .stepConnector {
-    flex-direction: column;
-    width: auto;
-    margin-bottom: 0;
-  }
-
-  .stepLine {
-    width: 1px;
-    height: 40px;
-    background: linear-gradient(180deg, var(--border), transparent);
-    margin: -1px 0;
-  }
-
-  .stepContent {
-    padding: 0;
-  }
-}
-
-@media (max-width: 600px) {
-  .serviceGrid {
-    grid-template-columns: 1fr;
   }
 }

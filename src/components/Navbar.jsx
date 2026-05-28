@@ -4,7 +4,7 @@ import styles from './Navbar.module.css'
 const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Services', href: '#services' },
-  { label: 'Work', href: '#work' },
+  { label: 'Client Work', href: '#work' },
   { label: 'Contact', href: '#contact' },
 ]
 
